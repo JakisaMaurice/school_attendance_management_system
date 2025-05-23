@@ -22,7 +22,7 @@ if (isset($_GET['message'])) {
 ?>
 
 <?php require 'partials/head.php' ?>
-
+<html>
 <body style="background: url(images/landing_page_background.png); background-repeat: no-repeat; background-position: cover; background-size: cover;">
     <h2 style="text-align: center;">Student Attendance System</h2>
     <h3 style="text-align: center;">Welcome to the Student Attendance System</h3>
@@ -38,3 +38,4 @@ if (isset($_GET['message'])) {
     <p style="text-align: center;">Forgot   ` your password? <a href="reset_password.php">Reset Password</a></p>
     <p style="text-align: center;">Need help? <a href="help.php">Contact Support</a></p>
 </body>
+</html>
