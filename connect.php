@@ -1,13 +1,11 @@
 <?php
-$host = getenv("DB_HOST");
-$dbname = getenv("DB_NAME");
-$user = getenv("DB_USER");
-$pass = getenv("DB_PASS");
-$port = getenv("DB_PORT");
+$server = 'localhost';
+$username = 'root'; // Change if using a different user
+$password = ''; // Add password if set
+$dbname = 'attendance_system';
 
-$conn = pg_connect("host=$host dbname=$dbname user=$user password=$pass port=$port");
-
-if(!$conn){
-    die("Connection failed: " . pg_last_error());
+$conn = new mysqli($server, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>
