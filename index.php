@@ -1,6 +1,6 @@
 <?php
-include 'connect.php';
 session_start();
+include 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -39,3 +39,4 @@ if (isset($_GET['message'])) {
     <p style="text-align: center;">Need help? <a href="help.php">Contact Support</a></p>
 </body>
 </html>
+
