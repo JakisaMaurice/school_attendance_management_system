@@ -1,13 +1,15 @@
-<?php include 'session.php'; ?>
-
 <?php
-// session_start();
+// Start session and check authentication first
+session_start();
 include 'connect.php';
 
 if (!isset($_SESSION['admin'])) {
     header("Location: index.php");
     exit();
 }
+
+// Include session management after header checks
+include 'session.php';
 
 // Fetch total students
 $total_students_query = "SELECT COUNT(*) AS total_students FROM students";
