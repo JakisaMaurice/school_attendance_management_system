@@ -1,14 +1,15 @@
 <?php
 $conn = mysqli_connect(
-    "centerbeam.proxy.rlwy.net:19912",
+    "centerbeam.proxy.rlwy.net",
     "root",
     "OZQBoaKdOtjHINeYzgnyIZhZSvtHXPmQ",
     "railway",
-    3306
+    19912
 );
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 ?>
+
 
