@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include 'connect.php';
 
@@ -39,4 +40,5 @@ if (isset($_GET['message'])) {
     <p style="text-align: center;">Need help? <a href="help.php">Contact Support</a></p>
 </body>
 </html>
+
 
