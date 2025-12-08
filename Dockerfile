@@ -1,11 +1,14 @@
-# Use official PHP image with Apache
+# Use a more commonly available PHP version
 FROM php:8.2-apache
 
-# Enable PHP extensions if needed (like mysqli)
+# Install required PHP extensions
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Copy your project files into the web directory
-COPY . /var/www/html/
+# Install required PHP extensions
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Expose port 80
+WORKDIR /var/www/html/
+
+COPY . .
+
 EXPOSE 80

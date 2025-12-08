@@ -54,8 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Only insert a class session ONCE PER DAY or with a toggle button
         // You can use a session check or create a button like "Start Class Session"
 
-        // Step 1: Insert into classes table
-        $insert_class = "INSERT INTO classes () VALUES ()";
+        // Step 1: Insert into classes table with proper values
+        $class_name = "General Class"; // Default class name
+        $insert_class = "INSERT INTO classes (class_name) VALUES ('$class_name')";
         $conn->query($insert_class); // Creates one row = 1 class
 
         // Step 2: Mark attendance for the current student

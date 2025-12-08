@@ -10,7 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $reg_no = $_POST['reg_no'];
     $course = $_POST['course'];
     $year = $_POST['year'];
-    $query = "INSERT INTO students (name, reg_no, course, year) VALUES ('$name', '$reg_no', '$course', '$year')";
+    // Optional fields (can be NULL)
+    $fullname = $_POST['fullname'] ?? $name; // Use name as default for fullname
+    $class = $_POST['class'] ?? NULL;
+    $gender = $_POST['gender'] ?? NULL;
+    $query = "INSERT INTO students (name, reg_no, course, year, fullname, class, gender) VALUES ('$name', '$reg_no', '$course', '$year', '$fullname', '$class', '$gender')";
     if ($conn->query($query) === TRUE) {
         $message = "Student Registered Successfully";
         $messageType = 'success';
@@ -144,5 +148,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="text" name="reg_no" placeholder="Registration Number" required>
     <input type="text" name="course" placeholder="Course" required>
     <input type="text" name="year" placeholder="Year of Study" required>
+    <!-- Optional fields - not required -->
+    <input type="text" name="class" placeholder="Class (optional)">
+    <input type="text" name="gender" placeholder="Gender (optional)">
     <button type="submit">Register</button>
 </form>

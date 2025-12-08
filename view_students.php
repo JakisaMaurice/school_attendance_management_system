@@ -81,8 +81,8 @@ $result = $conn->query($query);
 include 'connect.php';
 
 $query = "SELECT students.name, students.reg_no, attendance_records.course_unit, attendance_records.attendance_date
-          FROM attendance_records 
-          JOIN students ON students.reg_no = attendance_records.reg_no 
+          FROM attendance_records
+          JOIN students ON CONVERT(students.reg_no USING utf8mb4) = CONVERT(attendance_records.reg_no USING utf8mb4)
           ORDER BY attendance_records.attendance_date DESC";
 
 $result = $conn->query($query);

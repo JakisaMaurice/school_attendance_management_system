@@ -1,14 +1,14 @@
 <?php
-// Start session and check authentication first
+// Start session first
 session_start();
-include 'connect.php';
 
+// Check authentication
 if (!isset($_SESSION['admin'])) {
     header("Location: index.php");
     exit();
 }
 
-// Include session management after header checks
+include 'connect.php';
 include 'session.php';
 
 // Fetch total students
@@ -23,13 +23,21 @@ $total_classes = $total_classes_result->fetch_assoc()['total_classes'];
 
 
 // Calculate average attendance percentage
-$attendance_query = "
-    SELECT AVG((attendance / (SELECT COUNT(*) FROM classes)) * 100) AS avg_attendance 
-    FROM students 
-    WHERE attendance > 0
-";
-$attendance_result = $conn->query($attendance_query);
-$avg_attendance = $attendance_result->fetch_assoc()['avg_attendance'];
+// Check if attendance column exists first
+$result = $conn->query("SHOW COLUMNS FROM students LIKE 'attendance'");
+if ($result && $result->num_rows > 0) {
+    // Attendance column exists
+    $attendance_query = "
+        SELECT AVG((IFNULL(attendance, 0) / (SELECT COUNT(*) FROM classes)) * 100) AS avg_attendance
+        FROM students
+        WHERE IFNULL(attendance, 0) > 0
+    ";
+    $attendance_result = $conn->query($attendance_query);
+    $avg_attendance = $attendance_result ? $attendance_result->fetch_assoc()['avg_attendance'] : 0;
+} else {
+    // Attendance column doesn't exist, set to 0
+    $avg_attendance = 0;
+}
 ?>
 
 <!DOCTYPE html>

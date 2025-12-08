@@ -35,9 +35,9 @@ if (isset($_GET['message'])) {
         <button type="submit">Login</button>
     </form>
     <p style="text-align: center;">Default username: DEFAULT, Default password: DEFAULT</p>
-    <p style="text-align: center;">Don't have an account? <a href="register.php">Register</a></p>
+    <!-- <p style="text-align: center;">Don't have an account? <a href="register.php">Register</a></p>
     <p style="text-align: center;">Forgot   ` your password? <a href="reset_password.php">Reset Password</a></p>
-    <p style="text-align: center;">Need help? <a href="help.php">Contact Support</a></p>
+    <p style="text-align: center;">Need help? <a href="help.php">Contact Support</a></p> -->
 </body>
 </html>
 
